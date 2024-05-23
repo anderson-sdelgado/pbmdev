@@ -26,7 +26,6 @@ class AtualAplicCTR {
         }
 
         $retAtualApp = 0;
-
         
         $v = $atualAplicDAO->verToken($token);
         

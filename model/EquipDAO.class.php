@@ -48,9 +48,7 @@ class EquipDAO extends Conn  {
     public function verifEquipNro($nroEquip) {
 
         $select = " SELECT " 
-                        . " E.EQUIP_ID AS \"idEquip\" "
-                        . " , E.NRO_EQUIP AS \"nroEquip\""
-                        . " , CARACTER(CO.DESCR) AS \"descrClasseEquip\""
+                        . " COUNT(E.EQUIP_ID) AS QTDE "
                     . " FROM "
                         . " USINAS.EQUIP E"
                         . " , USINAS.CLASSE_OPER CO "

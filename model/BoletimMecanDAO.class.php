@@ -19,15 +19,15 @@ class BoletimMecanDAO extends Conn {
     public function verifBolMecan($bol) {
 
         $select = " SELECT "
-                . " COUNT(*) AS QTDE "
-                . " FROM "
-                . " PBM_BOLETIM "
-                . " WHERE "
-                . " DTHR_CEL_INICIAL = TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " AND "
-                . " FUNC_ID = " . $bol->idFuncBolMecan
-                . " AND "
-                . " CEL_ID = " . $bol->idBolMecan;
+                            . " COUNT(*) AS QTDE "
+                        . " FROM "
+                            . " PBM_BOLETIM "
+                        . " WHERE "
+                            . " DTHR_CEL_INICIAL = TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
+                            . " AND "
+                            . " FUNC_ID = " . $bol->idFuncBolMecan
+                            . " AND "
+                            . " CEL_ID = " . $bol->idBolMecan;
 
         $this->Conn = parent::getConn();
         $this->Read = $this->Conn->prepare($select);
@@ -45,15 +45,15 @@ class BoletimMecanDAO extends Conn {
     public function idBolMecan($bol) {
 
         $select = " SELECT "
-                . " ID AS ID "
-                . " FROM "
-                . " PBM_BOLETIM "
-                . " WHERE "
-                . " DTHR_CEL_INICIAL = TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " AND "
-                . " FUNC_ID = " . $bol->idFuncBolMecan
-                . " AND "
-                . " CEL_ID = " . $bol->idBolMecan;
+                            . " ID AS ID "
+                        . " FROM "
+                            . " PBM_BOLETIM "
+                        . " WHERE "
+                            . " DTHR_CEL_INICIAL = TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
+                            . " AND "
+                            . " FUNC_ID = " . $bol->idFuncBolMecan
+                            . " AND "
+                            . " CEL_ID = " . $bol->idBolMecan;
 
         $this->Conn = parent::getConn();
         $this->Read = $this->Conn->prepare($select);
@@ -71,23 +71,23 @@ class BoletimMecanDAO extends Conn {
     public function insBolMecanAberto($bol) {
 
         $sql = "INSERT INTO PBM_BOLETIM ("
-                . " FUNC_ID "
-                . " , EQUIP_ID "
-                . " , DTHR_INICIAL "
-                . " , DTHR_CEL_INICIAL "
-                . " , DTHR_TRANS_INICIAL "
-                . " , STATUS "
-                . " , CEL_ID "
-                . " ) "
-                . " VALUES ("
-                . " " . $bol->idFuncBolMecan
-                . " , " . $bol->idEquipBolMecan
-                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " , SYSDATE "
-                . " , 1 "
-                . " , " . $bol->idBolMecan
-                . " )";
+                                . " FUNC_ID "
+                                . " , EQUIP_ID "
+                                . " , DTHR_INICIAL "
+                                . " , DTHR_CEL_INICIAL "
+                                . " , DTHR_TRANS_INICIAL "
+                                . " , STATUS "
+                                . " , CEL_ID "
+                            . " ) "
+                            . " VALUES ("
+                                . " " . $bol->idFuncBolMecan
+                                . " , " . $bol->idEquipBolMecan
+                                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
+                                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
+                                . " , SYSDATE "
+                                . " , 1 "
+                                . " , " . $bol->idBolMecan
+                            . " )";
 
         $this->Conn = parent::getConn();
         $this->Create = $this->Conn->prepare($sql);
@@ -97,31 +97,31 @@ class BoletimMecanDAO extends Conn {
     public function insBolMecanFechado($bol) {
 
         $sql = "INSERT INTO PBM_BOLETIM ("
-                . " FUNC_ID "
-                . " , EQUIP_ID "
-                . " , DTHR_INICIAL "
-                . " , DTHR_CEL_INICIAL "
-                . " , DTHR_TRANS_INICIAL "
-                . " , DTHR_FINAL "
-                . " , DTHR_CEL_FINAL "
-                . " , DTHR_TRANS_FINAL "
-                . " , STATUS "
-                . " , STATUS_FECH "
-                . " , CEL_ID "
-                . " ) "
-                . " VALUES ("
-                . " " . $bol->idFuncBolMecan
-                . " , " . $bol->equipBolMecan
-                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " , SYSDATE "
-                . " , TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " , TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI') "
-                . " , SYSDATE "
-                . " , 2 "
-                . " , " . $bol->statusFechBolMecan
-                . " , " . $bol->idBolMecan
-                . " )";
+                                . " FUNC_ID "
+                                . " , EQUIP_ID "
+                                . " , DTHR_INICIAL "
+                                . " , DTHR_CEL_INICIAL "
+                                . " , DTHR_TRANS_INICIAL "
+                                . " , DTHR_FINAL "
+                                . " , DTHR_CEL_FINAL "
+                                . " , DTHR_TRANS_FINAL "
+                                . " , STATUS "
+                                . " , STATUS_FECH "
+                                . " , CEL_ID "
+                            . " ) "
+                            . " VALUES ("
+                                . " " . $bol->idFuncBolMecan
+                                . " , " . $bol->equipBolMecan
+                                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
+                                . " , TO_DATE('" . $bol->dthrInicialBolMecan . "','DD/MM/YYYY HH24:MI') "
+                                . " , SYSDATE "
+                                . " , TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI') "
+                                . " , TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI') "
+                                . " , SYSDATE "
+                                . " , 2 "
+                                . " , " . $bol->statusFechBolMecan
+                                . " , " . $bol->idBolMecan
+                            . " )";
 
         $this->Conn = parent::getConn();
         $this->Create = $this->Conn->prepare($sql);
@@ -131,14 +131,14 @@ class BoletimMecanDAO extends Conn {
     public function updBolMecanFechado($bol) {
 
         $sql = "UPDATE PBM_BOLETIM "
-                . " SET "
-                . " STATUS = " . $bol->statusBolMecan
-                . " , DTHR_FINAL = TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI')"
-                . " , DTHR_CEL_FINAL = TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI')"
-                . " , DTHR_TRANS_FINAL = SYSDATE "
-                . " , STATUS_FECH = " . $bol->statusFechBolMecan
-                . " WHERE "
-                . " ID = " . $bol->idExtBolMecan;
+                        . " SET "
+                            . " STATUS = " . $bol->statusBolMecan
+                            . " , DTHR_FINAL = TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI')"
+                            . " , DTHR_CEL_FINAL = TO_DATE('" . $bol->dthrFinalBolMecan . "','DD/MM/YYYY HH24:MI')"
+                            . " , DTHR_TRANS_FINAL = SYSDATE "
+                            . " , STATUS_FECH = " . $bol->statusFechBolMecan
+                        . " WHERE "
+                            . " ID = " . $bol->idExtBolMecan;
 
         $this->Conn = parent::getConn();
         $this->Create = $this->Conn->prepare($sql);
